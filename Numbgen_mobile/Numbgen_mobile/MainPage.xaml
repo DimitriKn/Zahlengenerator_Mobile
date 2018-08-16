@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Numbgen_mobile"
+             x:Class="Numbgen_mobile.MainPage"
+             >
+    <AbsoluteLayout>
+        <Image Source="gr.jpg" Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+               AbsoluteLayout.LayoutFlags="All" />
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0.0, 0.0, 1.0, 1.0"
+            AbsoluteLayout.LayoutFlags="All">
+        
+        <!-- Place new controls here -->
+    	
+        <Label Text="Zahlengenerator" 
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+               FontSize="Medium"/>
+            <Grid Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Entry  Grid.Column="0"  x:Name ="Eing1"
+           Margin="30"  VerticalOptions="Center"/>
+
+                <Label Text="aus" 
+                        Grid.Column="1"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+           VerticalOptions="Center" />
+
+                <Entry  Grid.Column="2" x:Name ="Eing2"
+           Margin="30" VerticalOptions="Center"/>
+
+            </Grid>
+            <Editor Margin="35"  x:Name ="Erg"  HeightRequest = "300" />
+
+            <Image  Source="kn.png" HeightRequest = "40" Margin="-15" IsEnabled="False"/>
+            
+            <Grid Grid.Row="3" Margin="25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="6 aus 49" 
+             x:Name="Gen6x49"
+             Grid.Column="0"
+             Margin="9"       
+             VerticalOptions="Center"
+             Clicked="Gen6x49_Clicked" />
+
+            <Button Text="Generieren"  
+            x:Name="GenByClick"        
+            Grid.Column="1"
+            Margin="-1"         
+            VerticalOptions="Center" 
+            Clicked="GenByClick_Clicked" />
+
+            <Button Text="5 aus 50 "  
+            x:Name="Gen5x50ByClick"
+            Grid.Column="2"
+            Margin="9"        
+            VerticalOptions="Center"
+            Clicked="Gen5x50ByClick_Clicked" />
+       
+        
+        </Grid>
+        
+    </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

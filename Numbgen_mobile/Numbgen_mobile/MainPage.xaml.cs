@@ -12,7 +12,7 @@ namespace Numbgen_mobile
 		public MainPage()
 		{
 			InitializeComponent();
-            Erg.Text = "Zufallszahlengenerator. Geben Sie die Zahlen von 1 bis 1000";
+            Erg.Text = "Willkommen! Das ist ein Zufallszahlengenerator. Geben Sie die Zahlen von 1 bis 1000";
             Erg.FontSize = 16;
 
            
@@ -32,8 +32,9 @@ namespace Numbgen_mobile
 
                 if (lg == 0 || kg > 1000)
                 {
-                    Erg.Text = "nur von 1 bis 1000";
-                   
+                    Erg.Text = "Es sind die Zahlen nur von 1 bis 1000 erlaubt";
+
+
                     Erg.FontSize = 16;
 
                 }
@@ -57,25 +58,29 @@ namespace Numbgen_mobile
             Rand(5, 50);
         }
 
-       
-
-
         private void Rand(int lg, int kg)
         {
             Random rnd = new Random();
 
             StringBuilder sb = new StringBuilder();
 
+
+
             if (lg == 5 && kg == 50)
             {
-                string[] numbs = new string[lg];
+                string[] numbs = new string[lg * 2];
 
-                for (int ctr = 0; ctr < lg; ctr++)
+                for (int ctr = 0; ctr < lg * 2; ctr++)
                 {
                     numbs[ctr] = rnd.Next(1, kg).ToString();
                 }
 
-                foreach (var num in numbs.OrderBy(x => int.Parse(x)))
+                // identische Zahlen entfernen
+
+                numbs = numbs.Distinct().ToArray();
+
+
+                foreach (var num in numbs.OrderBy(x => int.Parse(x)).Take(lg))
                 {
                     sb.Append(num).Append(" ");
                 }
@@ -83,14 +88,18 @@ namespace Numbgen_mobile
                 sb.Append("   ");
 
 
-                string[] numbs2 = new string[2];
+                string[] numbs2 = new string[4];
 
-                for (int tr = 0; tr < 2; tr++)
+
+
+                for (int tr = 0; tr < 4; tr++)
                 {
                     numbs2[tr] = rnd.Next(1, 10).ToString();
                 }
 
-                foreach (var num in numbs2.OrderBy(x => int.Parse(x))) // zahlen anordnen
+                numbs2 = numbs2.Distinct().ToArray();
+
+                foreach (var num in numbs2.OrderBy(x => int.Parse(x)).Take(2)) // zahlen anordnen
                 {
                     sb.Append(num).Append(" ");
                 }
@@ -101,17 +110,27 @@ namespace Numbgen_mobile
             }
             else
             {
-                // string array initialesieren
-                string[] numbs = new string[lg];
+                // string array initialisieren
+
+                string[] numbs = new string[lg * 2];
+
                 // befüllen
-                for (int ctr = 0; ctr < lg; ctr++)
+
+                for (int ctr = 0; ctr < lg * 2; ctr++)
                 {
                     numbs[ctr] = rnd.Next(1, kg).ToString();
                 }
+
+                // identische Zahlen entfernen
+
+                numbs = numbs.Distinct().ToArray();
+
                 //ausgeben 
-                foreach (var num in numbs.OrderBy(x => int.Parse(x)))
+
+                foreach (var num in numbs.OrderBy(x => int.Parse(x)).Take(lg))
                 {
                     sb.Append(num).Append(" ");
+
                 }
 
                 string res = sb.ToString();
